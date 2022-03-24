@@ -19,6 +19,9 @@ const createIntern = async (req, res)=>{
         if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
             return res.status(400).json({status:false, msg:`Invalid email address!`})
         }
+
+       
+
         if(validator.isValid(mobile)){
             return res.status(400).json({status:false, msg:`mobile number is mandatory field!`})
         }

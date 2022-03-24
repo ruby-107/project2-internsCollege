@@ -8,7 +8,7 @@ const createCollege = async (req, res) => {
     if(Object.keys(requestBody).length === 0){
         return res.status(400).json({status:false, msg:`Invalid Input. Please enter college details!`})
     }
-    let { name, fullName } = requestBody;
+    let { name, fullName ,logoLink} = requestBody;
 
     if (!validator.isValidString(name)) {
       return res
@@ -20,6 +20,10 @@ const createCollege = async (req, res) => {
         .status(400)
         .json({ status: false, msg: `Full College Name is required!` });
     }
+
+    if(!validator.isValidString(logoLink)){
+      return res.status(400).json({status : false, msg : `logoLink is required`})
+  }
 
     const collegeData = await collegeModel.create(requestBody);
      res
